@@ -1,7 +1,8 @@
 import * as actionTypes from './actionTypes';
 
 const initialState = {
-  searchField: ''  
+  searchField: '',
+  robots: [],
 };
 
 const reducer = (state=initialState, action) => {
@@ -10,6 +11,11 @@ const reducer = (state=initialState, action) => {
         return {
           ...state,
           searchField: action.payload
+        };
+      case actionTypes.SET_ROBOTS: 
+        return {
+          ...state,
+          robots: action.payload,
         };
       default: 
         return state;
