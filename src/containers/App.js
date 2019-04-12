@@ -3,6 +3,20 @@ import React, { Component } from 'react';
 import './App.css';
 import Cards from '../components/Cards';
 import SearchBox from '../components/SearchBox';
+import { connect } from 'react-redux';
+import { setSearchField } from '../actions';
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSearch: (e) => dispatch(setSearchField(e.target.value))
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    searchField: state.searchField,
+  };
+};
 
 class App extends Component {
   state = {
@@ -16,10 +30,6 @@ class App extends Component {
       .then(result => this.setState({ robots: result }));
   }
   
-  onChangeHandler = (e) => { 
-    this.setState({ searchField: e.target.value }); 
-  }
-  
   render() {
     const filterRobots = this.state.robots.filter(robot => {
       return robot.name.toLowerCase().includes(this.state.searchField);
@@ -30,8 +40,8 @@ class App extends Component {
           Robo Friends
         </h1>
         <SearchBox 
-        onChangeHandler={this.onChangeHandler}
-        value={this.state.searchField}
+        onChangeHandler={this.props.onSearch}
+        value={this.props.searchField}
         />
         <Cards 
         data={filterRobots}
@@ -41,4 +51,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,14 +1,18 @@
 import * as actionTypes from './actionTypes';
 
 const initialState = {
-  textField: ''  
+  searchField: ''  
 };
 
 const reducer = (state=initialState, action) => {
   switch(action.type){
-      case actionTypes.SET_TEXT_FIELD:
-          console.log('fuck you!', action.payload);
-          break;
+      case actionTypes.SET_SEARCH_FIELD:
+        return {
+          ...state,
+          searchField: action.payload
+        };
+      default: 
+        return state;
   }  
 };
 

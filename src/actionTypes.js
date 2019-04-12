@@ -1,1 +1,1 @@
-export const SET_TEXT_FIELD = "SET_TEXT_FIELD";
+export const SET_SEARCH_FIELD = 'SET_SEARCH_FIELD';

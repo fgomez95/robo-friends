@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-export const setTextField = (text) => ({
-    type: actionTypes.SET_TEXT_FIELD,
+export const setSearchField = (text) => ({
+    type: actionTypes.SET_SEARCH_FIELD,
     payload: text
 });
