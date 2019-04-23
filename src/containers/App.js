@@ -4,12 +4,12 @@ import './App.css';
 import Cards from '../components/Cards';
 import SearchBox from '../components/SearchBox';
 import { connect } from 'react-redux';
-import { setSearchField, setRobots } from '../actions';
+import { setSearchField, getRobots } from '../actions';
 
 const mapDispatchToProps = dispatch => {
   return {
     onSearch: (e) => dispatch(setSearchField(e.target.value)),
-    onSetRobots: (data) => dispatch(setRobots(data))
+    onGetRobots: () => dispatch(getRobots())
   };
 };
 
@@ -17,6 +17,9 @@ const mapStateToProps = state => {
   return {
     searchField: state.searchField,
     robots: state.robots,
+    loading: state.loading,
+    error: state.error,
+    errorMessage: state.errorMessage
   };
 };
 
@@ -27,9 +30,7 @@ class App extends Component {
   }
   
   componentDidMount(){
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(result => this.props.onSetRobots(result));
+    this.props.onGetRobots();
   }
   
   render() {

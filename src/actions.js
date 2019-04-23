@@ -5,7 +5,18 @@ export const setSearchField = (text) => ({
     payload: text
 });
 
-export const setRobots = (data) => ({
-    type: actionTypes.SET_ROBOTS,
-    payload: data,
-});
+export const getRobots = () => dispatch => {
+    dispatch({ type: actionTypes.REQUEST_PENDING });
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(result => dispatch({
+            type: actionTypes.REQUEST_SUCCESS,
+            payload: result
+        }))
+        .catch(err => {
+            dispatch({
+                type: actionTypes.REQUEST_FAILED,
+                payload: err,
+            });
+        });
+}
