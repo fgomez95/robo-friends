@@ -1,10 +1,9 @@
 /* global fetch */
 import React, { Component } from 'react';
 import './App.css';
-import Cards from '../components/Cards';
-import SearchBox from '../components/SearchBox';
 import { connect } from 'react-redux';
 import { setSearchField, getRobots } from '../actions';
+import MainPage from '../components/MainPage';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -23,33 +22,10 @@ const mapStateToProps = state => {
   };
 };
 
-class App extends Component {
-  state = {
-    robots: [],
-    searchField: '',
-  }
-  
-  componentDidMount(){
-    this.props.onGetRobots();
-  }
-  
+class App extends Component {  
   render() {
-    const filterRobots = this.props.robots.filter(robot => {
-      return robot.name.toLowerCase().includes(this.props.searchField);
-    });
     return (
-      <div className="tc">
-        <h1 className="bg-black color-name white">
-          Robo Friends
-        </h1>
-        <SearchBox 
-        onChangeHandler={this.props.onSearch}
-        value={this.props.searchField}
-        />
-        <Cards 
-        data={filterRobots}
-        />
-      </div>
+      <MainPage {...this.props}/>
     );
   }
 }
