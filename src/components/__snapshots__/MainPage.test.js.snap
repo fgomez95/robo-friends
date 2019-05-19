@@ -44,7 +44,7 @@ ShallowWrapper {
           value=""
         />,
         <Cards
-          data={[Function]}
+          data={Array []}
         />,
       ],
       "className": "tc",
@@ -80,7 +80,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "data": [Function],
+          "data": Array [],
         },
         "ref": null,
         "rendered": null,
@@ -105,7 +105,7 @@ ShallowWrapper {
             value=""
           />,
           <Cards
-            data={[Function]}
+            data={Array []}
           />,
         ],
         "className": "tc",
@@ -141,7 +141,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "data": [Function],
+            "data": Array [],
           },
           "ref": null,
           "rendered": null,
