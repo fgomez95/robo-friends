@@ -23,11 +23,11 @@ class MainPage extends React.Component {
           Robo Friends
         </h1>
         <SearchBox 
-        onChangeHandler={onSearch}
-        value={searchField}
+          onChangeHandler={onSearch}
+          value={searchField}
         />
         <Cards 
-        data={this.filterRobots}
+          data={this.filterRobots()}
         />
       </div>
     );
